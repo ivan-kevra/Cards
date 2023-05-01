@@ -1,0 +1,9 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button {
+    border-radius: 30px;
+}
