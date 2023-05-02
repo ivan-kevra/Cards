@@ -4,7 +4,7 @@ import { authThunks } from "features/auth/auth.slice";
 import style from "features/auth/register/Style.module.css";
 import { Header } from "components/header/Header";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ArgLoginType } from "features/auth/auth.api";
+import { ArgRegisterType, ResponseType } from "features/auth/auth.api";
 import { Email } from "components/email/Email";
 import { Password } from "components/password/Password";
 import Button from "@mui/material/Button";
@@ -15,8 +15,8 @@ export const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ArgLoginType>();
-  const onSubmit: SubmitHandler<ArgLoginType> = (data) => {
+  } = useForm<ResponseType>();
+  const onSubmit: SubmitHandler<ResponseType> = (data) => {
     console.log(data);
     dispatch(authThunks.register(data));
   };

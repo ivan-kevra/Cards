@@ -1,10 +1,10 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import { UseFormRegister } from "react-hook-form";
-import { ArgLoginType } from "features/auth/auth.api";
+import { ResponseType } from "features/auth/auth.api";
 
 type EmailPropsType = {
-  register: UseFormRegister<ArgLoginType>;
+  register: UseFormRegister<ResponseType>;
 };
 export const Email = (props: EmailPropsType) => {
   console.log(props.register);

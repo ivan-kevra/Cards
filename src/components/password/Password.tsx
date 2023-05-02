@@ -7,10 +7,10 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Visibility from "@mui/icons-material/Visibility";
 import FormControl from "@mui/material/FormControl";
 import { UseFormRegister } from "react-hook-form";
-import { ArgLoginType } from "features/auth/auth.api";
+import { ResponseType } from "features/auth/auth.api";
 
 type PasswordPropsType = {
-  register: UseFormRegister<ArgLoginType>;
+  register: UseFormRegister<ResponseType>;
   label: string;
 };
 
