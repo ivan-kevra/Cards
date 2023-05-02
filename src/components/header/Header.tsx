@@ -1,12 +1,12 @@
 import logo from "features/auth/login/img/logo.svg";
 import React from "react";
-import style from "./Style.module.css";
+import style from "components/header/Style.module.css";
 
 export const Header = () => {
   return (
     <div className={style.header}>
       <img src={logo} alt={"logo"} />
-      <button type="submit" className={style.button}>
+      <button className={style.button}>
         <span>Sign in</span>
       </button>
     </div>

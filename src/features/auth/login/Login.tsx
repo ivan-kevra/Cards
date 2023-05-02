@@ -5,7 +5,7 @@ import { ArgLoginType } from "features/auth/auth.api";
 import React from "react";
 import style from "features/auth/login/Style.module.css";
 import logo from "features/auth/login/img/logo.svg";
-import { Header } from "features/auth/login/header/Header";
+import { Header } from "components/header/Header";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import Input from "@mui/material/Input";
@@ -16,6 +16,8 @@ import Visibility from "@mui/icons-material/Visibility";
 import FormControl from "@mui/material/FormControl";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
+import { Email } from "components/email/Email";
+import { Password } from "components/password/Password";
 
 export const Login = () => {
   const dispatch = useAppDispatch();
@@ -28,9 +30,6 @@ export const Login = () => {
     console.log(data);
     dispatch(authThunks.login(data));
   };
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={style.login}>
@@ -38,30 +37,8 @@ export const Login = () => {
 
       <div className={style.container}>
         <h1>Sign in</h1>
-        <TextField
-          defaultValue={"vanyakevra@gmail.com"}
-          {...register("email", { required: true })}
-          id="standard-basic"
-          label="Email"
-          variant="standard"
-          sx={{ m: 1, width: "85%" }}
-        />
-        <FormControl sx={{ m: 1, width: "85%" }} variant="standard">
-          <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-          <Input
-            defaultValue={"12345678"}
-            {...register("password", { required: true, minLength: 8 })}
-            id="standard-adornment-password"
-            type={showPassword ? "text" : "password"}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword}>
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
+        <Email register={register} />
+        <Password register={register} label={"Password"} />
         <div className={style.rememberMe}>
           <Checkbox defaultChecked />
           <span>Remember me</span>
