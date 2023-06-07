@@ -2,7 +2,7 @@ import React from "react";
 import { useAppDispatch } from "app/hooks";
 import { authThunks } from "features/auth/auth.slice";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ArgLoginType } from "features/auth/auth.api";
+import { ArgLoginType, ArgRegisterType, AuthResponseType } from "features/auth/auth.api";
 import { Header } from "components/header/Header";
 import style from "./Style.module.css";
 import { Email } from "components/email/Email";
@@ -14,8 +14,8 @@ export const Login = () => {
   const dispatch = useAppDispatch();
 
 
-  const { register, handleSubmit } = useForm<ArgLoginType>();
-  const onSubmit: SubmitHandler<ArgLoginType> = data => {
+  const { register, handleSubmit } = useForm<AuthResponseType>();
+  const onSubmit: SubmitHandler<AuthResponseType> = data => {
     console.log(data);
     dispatch(authThunks.login(data));
   };

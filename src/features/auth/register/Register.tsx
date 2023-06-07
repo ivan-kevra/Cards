@@ -1,22 +1,45 @@
 import React from "react";
 import { authThunks } from "features/auth/auth.slice";
 import { useAppDispatch } from "app/hooks";
-import s from "features/auth/register/Style.module.css";
+import { Header } from "components/header/Header";
+import style from "./Style.module.css";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { ArgRegisterType } from "features/auth/auth.api";
+import { Email } from "components/email/Email";
+import { Password } from "components/password/Password";
+import Button from "@mui/material/Button/Button";
 
 export const Register = () => {
   const dispatch = useAppDispatch();
-  const registerHandler = () => {
-    const payload = {
-      email: "vanyakevra@gmail.com",
-      password: "12345678"
-    };
-    dispatch(authThunks.register(payload));
+
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<ArgRegisterType>();
+  const onSubmit: SubmitHandler<ArgRegisterType> = (data) => {
+    console.log(data);
+    dispatch(authThunks.register(data));
   };
 
   return (
-    <div className={s.container}>
-      <h1>Register</h1>
-      <button onClick={registerHandler}>register</button>
-    </div>
+    <>
+      <Header />
+      <form onSubmit={handleSubmit(onSubmit)} className={style.register}>
+        <div className={style.container}>
+          <h1>Sign Up</h1>
+          <Email register={register} />
+          <Password register={register} label={"Password"} />
+          <Password register={register} label={"Confirm password"} />
+          <button className={style.button}>
+            <span>Sign up</span>
+          </button>
+          <span className={style.account}>Already have account?</span>
+          <Button variant="text">Sign in</Button>
+        </div>
+
+      </form>
+    </>
   );
 };

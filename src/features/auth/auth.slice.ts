@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ArgLoginType, ArgRegisterType, authApi, ProfileType } from "features/auth/auth.api";
+import { authApi, AuthResponseType, ProfileType } from "features/auth/auth.api";
 import { createAppAsyncThunk } from "common/utils/create-app-async-thunk";
 
 const slice = createSlice({
@@ -17,11 +17,11 @@ const slice = createSlice({
   }
 });
 
-const register = createAppAsyncThunk<void, ArgRegisterType>
+const register = createAppAsyncThunk<void, AuthResponseType>
 ("auth/register", async (arg) => {
   await authApi.register(arg);
 });
-const login = createAppAsyncThunk<{ profile: ProfileType }, ArgLoginType>
+const login = createAppAsyncThunk<{ profile: ProfileType }, AuthResponseType>
 ("auth/login", async (arg) => {
   const res = await authApi.login(arg);
   return { profile: res.data };
