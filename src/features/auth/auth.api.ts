@@ -1,4 +1,4 @@
-import { instance } from "common/common.api";
+import { instance, passwordInstance } from "common/common.api";
 
 export const authApi = {
   register: (arg: AuthResponseType) => {
@@ -7,10 +7,13 @@ export const authApi = {
   login: (arg: AuthResponseType) => {
     return instance.post<ProfileType>("auth/login", arg);
   },
+  sendNewPassword: (arg: EmailType) => {
+    return passwordInstance.post<SendNewPasswordResponseType>("auth/forgot", arg);
+  }
 };
 
 //type
-export type AuthResponseType = ArgLoginType | ArgRegisterType
+export type AuthResponseType = ArgLoginType | ArgRegisterType | EmailType
 export type ArgLoginType = {
   email: string
   password: string
@@ -33,4 +36,13 @@ export type ProfileType = {
   __v: number,
   token: string
   tokenDeathTime: number
+}
+export type EmailType = {
+  email: string
+}
+export type SendNewPasswordResponseType = {
+  info: string
+  success: boolean
+  answer: boolean
+  html: boolean
 }

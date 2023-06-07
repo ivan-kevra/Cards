@@ -8,6 +8,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Register } from "features/auth/register/Register";
 import { Login } from "features/auth/login/Login";
+import { NewPassword } from "features/auth/newPassword/NewPassword";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
   { element: <App />, path: "/" },
   { element: <Login />, path: "/login" },
   { element: <Register />, path: "/register" },
+  { element: <NewPassword />, path: "/new-password" },
   { element: <h1>packs</h1>, path: "/packs" }
 ]);
 

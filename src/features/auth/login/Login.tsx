@@ -13,7 +13,6 @@ import Button from "@mui/material/Button/Button";
 export const Login = () => {
   const dispatch = useAppDispatch();
 
-
   const { register, handleSubmit } = useForm<AuthResponseType>();
   const onSubmit: SubmitHandler<AuthResponseType> = data => {
     console.log(data);

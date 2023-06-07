@@ -4,21 +4,19 @@ import { useAppDispatch } from "app/hooks";
 import { Header } from "components/header/Header";
 import style from "./Style.module.css";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ArgRegisterType } from "features/auth/auth.api";
+import { ArgRegisterType, AuthResponseType } from "features/auth/auth.api";
 import { Email } from "components/email/Email";
 import { Password } from "components/password/Password";
 import Button from "@mui/material/Button/Button";
 
 export const Register = () => {
   const dispatch = useAppDispatch();
-
-
   const {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<ArgRegisterType>();
-  const onSubmit: SubmitHandler<ArgRegisterType> = (data) => {
+  } = useForm<AuthResponseType>();
+  const onSubmit: SubmitHandler<AuthResponseType> = (data) => {
     console.log(data);
     dispatch(authThunks.register(data));
   };
