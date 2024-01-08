@@ -1,0 +1,32 @@
+.button {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  padding: 6px 28px;
+  align-items: center;
+  justify-content: center;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-info-500);
+  }
+}
+
+.primary {
+  background-color: red;
+}
+
+.secondary {
+  background-color: green;
+}
+
+.tertiary {
+  background-color: blue;
+}
+
+.link {
+  background-color: yellow;
+}
+
+.fullWidth {
+  width: 100%;
+}
