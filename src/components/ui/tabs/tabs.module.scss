@@ -1,0 +1,28 @@
+.tab {
+  padding: 6px 24px;
+  border-radius: 2px 0px 0px 2px;
+  border: 1px solid var(--Dark-300);
+  line-height: var(--line-height-m);
+  background: var(--Dark-900);
+  &:hover {
+    border: 1px solid var(--Dark-100,);
+    background: var(--Dark-300,);
+    color: var(--Light-900,);
+  }
+
+  &:focus {
+    border: 2px solid var(--Info-900,);
+    background: var(--Dark-700,);
+    color: var(--Light-100,);
+  }
+  &:active {
+    border: 1px solid var(--Primary-500,);
+    background: var(--Primary-500,);
+    color: var(--Light-100,);
+  }
+  &:disabled {
+    border: 1px solid var(--Dark-300,);
+    background: var(--Dark-700,);
+    color: var(--Dark-300,);
+  }
+}

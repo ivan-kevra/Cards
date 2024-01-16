@@ -1,0 +1,80 @@
+.container {
+  .title {
+    color: var(--Dark-100);
+  }
+  .inputContainer {
+    position: relative;
+    .input {
+      all: unset;
+      width: 284px;
+      height: 36px;
+      border-radius: 2px;
+      border: 1px solid var(--Dark-300);
+      padding: 6px 12px;
+      box-sizing: border-box;
+      &::placeholder {
+        font-size: var(--font-size-m);
+      }
+      &:hover {
+        border: 1px solid var(--Dark-100);
+        background: var(--Dark-700);
+      }
+      &:focus {
+        border: 2px solid var(--Info-700);
+      }
+      &:active {
+        border: 1px solid var(--Light-100);
+        &::placeholder {
+          color: var(--Light-100);
+          font-size: var(--font-size-m);
+        }
+      }
+      &:disabled {
+        border: 1px solid var(--Dark-300);
+      }
+    }
+  }
+}
+
+.search {
+  .inputContainer {
+    .input {
+      padding: 0px 35px;
+    }
+  }
+}
+.error {
+  .inputContainer {
+    .input {
+      border: 1px solid var(--Danger-300);
+      color: var(--Danger-300);
+      &::placeholder {
+        color: var(--Danger-300);
+      }
+    }
+  }
+  .errorText {
+    color: var(--Danger-300);
+  }
+}
+
+.eyeIcon {
+  cursor: pointer;
+  position: absolute;
+  left: 250px;
+  top: 8px;
+}
+.searchIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+.cancelIcon {
+  position: absolute;
+  top: 10px;
+  left: 265px;
+  cursor: pointer;
+}

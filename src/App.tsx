@@ -1,12 +1,14 @@
-import { Button } from './components/ui/button'
+import s from './App.module.scss'
 
-export function App() {
+import { Checkbox } from './components/ui/checkbox/checkbox'
+
+export const App = () => {
   return (
-    <div>
-      <Button as="a" href="/link">
-        as link
-      </Button>
-      <Button as="button">as button</Button>
+    <div className={s.container}>
+      <Checkbox checked label={'checkbox'} />
+      <Checkbox checked={false} label={'checkbox'} />
+      <Checkbox checked disabled label={'disabled'} />
+      <Checkbox checked={false} disabled label={'disabled'} />
     </div>
   )
 }
