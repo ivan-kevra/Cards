@@ -6,7 +6,6 @@ import s from './checkbox.module.scss'
 
 import { Typography } from '../typography/typography'
 import CheckIcon from './checkIcon/checkIcon'
-import { useState } from 'react'
 
 type CheckboxProps = {
   checked?: boolean
@@ -38,26 +37,20 @@ export const Checkbox = (props: CheckboxProps) => {
     root: s.root,
   }
 
-  const [check, setCheck] = useState<boolean>(checked)
-
-  const onChangeHandler = () => {
-    setCheck(!check)
-  }
-
   return (
     <div className={classNames.container}>
       <LabelRadix.Root asChild>
         <Typography as={'label'} className={classNames.label} variant={'body2'}>
           <div className={classNames.buttonWrapper}>
             <CheckboxRadix.Root
-              checked={check}
+              checked={checked}
               className={classNames.root}
               disabled={disabled}
               id={id}
-              onCheckedChange={onChangeHandler}
+              onCheckedChange={onChange}
               required={required}
             >
-              {check && (
+              {checked && (
                 <CheckboxRadix.Indicator className={classNames.indicator} forceMount>
                   <CheckIcon />
                 </CheckboxRadix.Indicator>

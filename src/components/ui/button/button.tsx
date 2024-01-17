@@ -1,17 +1,14 @@
-import { ComponentPropsWithoutRef, ElementType } from 'react'
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
 
 import { clsx } from 'clsx'
 
 import s from './button.module.scss'
 
-import { Typography } from '../typography/typography'
-import editIcon from './icons/edit.svg'
-
 export type ButtonProps<T extends ElementType = 'button'> = {
   as?: T
+  children?: ReactNode
+  className?: string
   fullWidth?: boolean
-  hasIcon?: boolean
-  text: string
   variant?: 'link' | 'primary' | 'secondary' | 'tertiary'
 } & ComponentPropsWithoutRef<T>
 
@@ -20,20 +17,18 @@ export const Button = <T extends ElementType = 'button'>(
 ) => {
   const {
     as: Component = 'button',
+    children,
     className,
     fullWidth,
-    hasIcon = false,
-    text,
     variant = 'primary',
     ...rest
   } = props
 
-  const classNames = clsx(s.button, s[variant], fullWidth && s.fullWidth, className)
+  const classNames = { root: clsx(s.button, s[variant], fullWidth && s.fullWidth, className) }
 
   return (
-    <Component className={classNames} {...rest}>
-      {hasIcon ? <img alt={'edit'} className={s.img} src={editIcon} /> : null}
-      <Typography variant={variant === 'link' ? 'subtitle1' : 'subtitle2'}>{text}</Typography>
+    <Component className={classNames.root} {...rest}>
+      {children}
     </Component>
   )
 }
