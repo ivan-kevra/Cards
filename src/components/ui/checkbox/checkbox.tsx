@@ -13,7 +13,7 @@ type CheckboxProps = {
   disabled?: boolean
   id?: string
   label?: string
-  onChange?: (checked: boolean) => void
+  onValueChange?: (checked: boolean) => void
   position?: 'left'
   required?: boolean
 }
@@ -24,7 +24,7 @@ export const Checkbox = (props: CheckboxProps) => {
     disabled = false,
     id,
     label = '',
-    onChange,
+    onValueChange,
     position,
     required,
   } = props
@@ -47,7 +47,7 @@ export const Checkbox = (props: CheckboxProps) => {
               className={classNames.root}
               disabled={disabled}
               id={id}
-              onCheckedChange={onChange}
+              onCheckedChange={onValueChange}
               required={required}
             >
               {checked && (

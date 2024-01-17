@@ -1,63 +1,71 @@
-import { ChangeEvent, ComponentProps, useState } from 'react'
+import { ChangeEvent, ComponentProps, forwardRef, useState } from 'react'
 
 import { clsx } from 'clsx'
 
 import s from './textField.module.scss'
 
 import { Typography } from '../typography/typography'
-import cancel from './icons/cancel.svg'
-import eye from './icons/eye.svg'
+import Eye from './icons/eye'
 import searchIcon from './icons/searchIcon.svg'
+import VIsibilityOff from './icons/visibilityOff'
 
 export type Props = {
   className?: string
   errorMessage?: string
-  icon?: string
-  iconEnd?: string
-  iconStart?: string
   label?: string
-  onClearClick?: () => void
-  search?: boolean
-  value?: string
-  variant?: 'default' | 'password' | 'search'
+  onValueChange?: (value: string) => void
 } & ComponentProps<'input'>
 
-export const TextField = (props: Props) => {
-  const { className, label, variant = 'default', ...restProps } = props
+export const TextField = forwardRef<HTMLInputElement, Props>((props, ref) => {
+  const { className, label = '', onValueChange, placeholder, type, ...restProps } = props
   const [error, setError] = useState<null | string>(null)
-  const [title, setTitle] = useState<string>('')
 
   const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
-    setTitle(event?.currentTarget.value)
-  }
-  const clearTitleHandler = () => {
-    setTitle('')
+    onValueChange && onValueChange(event?.currentTarget.value)
   }
 
-  const classNames = clsx(s[variant], error && s.error, className, s.container)
+  const classNames = {
+    input: clsx(
+      type === 'search' && s.search,
+      type === 'text' && s.text,
+      type === 'password' && s.password,
+      s.input
+    ),
+    inputContainer: clsx(s.inputContainer),
+    root: clsx(error && s.error, className, s.container),
+  }
+
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+
+  const isShowPasswordButtonShown = type === 'password'
 
   return (
-    <div className={classNames}>
-      <Typography className={s.title} variant={'body2'}>
+    <div className={classNames.root}>
+      <Typography as={'label'} className={s.title} variant={'body2'}>
         {label}
       </Typography>
-      <div className={s.inputContainer}>
-        {variant === 'search' && <img className={s.searchIcon} src={searchIcon} />}
+      <div className={classNames.inputContainer}>
+        {type === 'search' && <img className={s.searchIcon} src={searchIcon} />}
         <input
-          className={s.input}
-          disabled={false}
+          className={classNames.input}
           onChange={onChangeTitle}
-          placeholder={'Input'}
-          value={title}
+          placeholder={placeholder}
+          ref={ref}
+          {...restProps}
         />
-        {variant === 'search' && title.length !== 0 && (
-          <img className={s.cancelIcon} onClick={clearTitleHandler} src={cancel} />
+        {isShowPasswordButtonShown && (
+          <button
+            className={s.showPassword}
+            onClick={() => setShowPassword(prev => !prev)}
+            type={'button'}
+          >
+            {showPassword ? <VIsibilityOff /> : <Eye />}
+          </button>
         )}
-        {variant === 'password' && <img alt={'eye'} className={s.eyeIcon} src={eye} />}
       </div>
       <Typography className={s.errorText} variant={'caption'}>
         {error && error}
       </Typography>
     </div>
   )
-}
+})
