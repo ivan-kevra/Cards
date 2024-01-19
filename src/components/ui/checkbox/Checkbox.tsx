@@ -1,18 +1,21 @@
+import { ElementRef, forwardRef } from 'react'
+
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import * as LabelRadix from '@radix-ui/react-label'
 import clsx from 'clsx'
 
-import s from './checkbox.module.scss'
+import s from './Checkbox.module.scss'
 
-import { Typography } from '../typography/typography'
-import CheckIcon from './checkIcon/checkIcon'
+import { Typography } from '../typography/Typography'
+import CheckIcon from './checkIcon/CheckIcon'
 
-type CheckboxProps = {
+export type CheckboxProps = {
   checked?: boolean
   className?: string
   disabled?: boolean
   id?: string
   label?: string
+  onBlur?: () => void
   onValueChange?: (checked: boolean) => void
   position?: 'left'
   required?: boolean

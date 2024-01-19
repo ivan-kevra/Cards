@@ -2,9 +2,9 @@ import { ChangeEvent, ComponentProps, forwardRef, useState } from 'react'
 
 import { clsx } from 'clsx'
 
-import s from './textField.module.scss'
+import s from './TextField.module.scss'
 
-import { Typography } from '../typography/typography'
+import { Typography } from '../typography/Typography'
 import Eye from './icons/eye'
 import searchIcon from './icons/searchIcon.svg'
 import VIsibilityOff from './icons/visibilityOff'
@@ -17,14 +17,22 @@ export type Props = {
 } & ComponentProps<'input'>
 
 export const TextField = forwardRef<HTMLInputElement, Props>((props, ref) => {
-  const { className, label = '', onValueChange, placeholder, type, ...restProps } = props
-  const [error, setError] = useState<null | string>(null)
+  const {
+    className,
+    errorMessage,
+    label = '',
+    onValueChange,
+    placeholder,
+    type,
+    ...restProps
+  } = props
 
   const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
     onValueChange && onValueChange(event?.currentTarget.value)
   }
 
   const classNames = {
+    errorText: clsx(s.errorText),
     input: clsx(
       type === 'search' && s.search,
       type === 'text' && s.text,
@@ -32,7 +40,7 @@ export const TextField = forwardRef<HTMLInputElement, Props>((props, ref) => {
       s.input
     ),
     inputContainer: clsx(s.inputContainer),
-    root: clsx(error && s.error, className, s.container),
+    root: clsx(errorMessage && s.error, className, s.container),
   }
 
   const [showPassword, setShowPassword] = useState<boolean>(false)
@@ -63,8 +71,8 @@ export const TextField = forwardRef<HTMLInputElement, Props>((props, ref) => {
           </button>
         )}
       </div>
-      <Typography className={s.errorText} variant={'caption'}>
-        {error && error}
+      <Typography className={classNames.errorText} variant={'caption'}>
+        {errorMessage && errorMessage}
       </Typography>
     </div>
   )

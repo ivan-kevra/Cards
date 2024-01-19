@@ -1,6 +1,6 @@
 import s from './header.module.scss'
 
-import { Button } from '../button'
+import { Button } from '../button/Index'
 import logo from './icons/logo.svg'
 
 type Props = {

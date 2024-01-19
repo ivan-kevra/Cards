@@ -4,12 +4,15 @@
   }
   .inputContainer {
     position: relative;
+    width: 100%;
+
     .input {
       all: unset;
       width: 284px;
       height: 36px;
       border-radius: 2px;
       border: 1px solid var(--Dark-300);
+      padding: 6px 12px;
 
       box-sizing: border-box;
       &::placeholder {
@@ -34,13 +37,34 @@
       }
     }
     .text {
-      padding: 6px 12px;
     }
     .password {
       padding: 6px 35px 6px 12px;
     }
     .search {
       padding: 6px 12px 6px 30px;
+    }
+    .showPassword {
+      cursor: pointer;
+
+      position: absolute;
+      top: 17px;
+      left: 250px;
+
+      transform: translateY(-50%);
+
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      padding: 0;
+
+      background: transparent;
+      border: 0;
+      outline: 0;
+
+      &:focus-visible {
+        outline: var(--outline-focus);
+      }
     }
   }
 }
@@ -68,27 +92,4 @@
   position: absolute;
   top: 8px;
   left: 8px;
-}
-
-.showPassword {
-  cursor: pointer;
-
-  position: absolute;
-  top: 50%;
-  right: 0;
-  bottom: 50%;
-  transform: translateY(-50%);
-
-  width: 20px;
-  height: 20px;
-  margin-right: 12px;
-  padding: 0;
-
-  background: transparent;
-  border: 0;
-  outline: 0;
-
-  &:focus-visible {
-    outline: var(--outline-focus);
-  }
 }

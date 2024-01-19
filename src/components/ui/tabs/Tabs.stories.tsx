@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Tabs } from './tabs'
+import { Tabs } from './Tabs'
 
 const meta = {
   argTypes: {},

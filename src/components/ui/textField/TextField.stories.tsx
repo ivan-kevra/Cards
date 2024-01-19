@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TextField } from '.'
+import { TextField } from './Index'
 
 const meta = {
   argTypes: {
     type: {
       control: { type: 'radio' },
-      options: ['default', 'password', 'search'],
+      options: ['text', 'password', 'search'],
     },
   },
   component: TextField,
@@ -19,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    name: 'default TextField',
-    type: 'default',
+    name: 'text TextField',
+    type: 'text',
   },
 }
 
