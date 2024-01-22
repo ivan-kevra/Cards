@@ -4,13 +4,15 @@
   line-height: $lineHeight;
   margin: 0;
   color: var(--color-text-primary);
+  width: 100%;
+  text-align: center;
 }
 
 .large {
   @include typography(var(--font-size-xxl), var(--line-height-l), var(--font-weight-bold));
 }
 .h1 {
-  @include typography(var(--font-size-xl), var(--line-height-l), var(--font-weight-bold));
+  @include typography(var(--font-size-xxl), var(--line-height-l), var(--font-weight-bold));
 }
 .h2 {
   @include typography(var(--font-size-l), var(--line-height-m), var(--font-weight-bold));

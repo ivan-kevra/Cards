@@ -1,6 +1,6 @@
-import s from './header.module.scss'
+import s from './Header.module.scss'
 
-import { Button } from '../button/Index'
+import { Button } from '../button/Button'
 import logo from './icons/logo.svg'
 
 type Props = {
@@ -18,7 +18,7 @@ export const Header = (props: Props) => {
           <div className={s.user}></div>
         </div>
       ) : (
-        <Button text={'Sign in'} />
+        <Button variant={'secondary'}>Sign in</Button>
       )}
     </div>
   )

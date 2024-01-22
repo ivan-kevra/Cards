@@ -41,7 +41,7 @@
     background: var(--Dark-500);
   }
   &:focus-visible {
-    border: 2px solid var(--Info-700);
+    outline: 2px solid var(--Info-700);
     background: var(--Dark-300);
   }
   &:disabled {
