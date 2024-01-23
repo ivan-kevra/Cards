@@ -1,14 +1,15 @@
 import { useForm } from 'react-hook-form'
 
-import { Button } from '@/components/ui/button/Button'
-import { TextField } from '@/components/ui/textField/TextField'
 import { Typography } from '@/components/ui/typography/Typography'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from './ForgotPassword.module.scss'
+import s from './CheckEmail.module.scss'
 
-export const ForgotPassword = () => {
+import email from './assets/email.svg'
+import { Button } from '@/components/ui/button/Button'
+
+export const CheckEmail = () => {
   const loginSchema = z.object({
     email: z.string().email(),
     password: z.string().min(3),
@@ -38,23 +39,12 @@ export const ForgotPassword = () => {
   return (
     <div className={s.container}>
       <form className={s.content} onSubmit={handleSubmit(onSubmit)}>
-        <Typography variant={'h1'}>Forgot your password?</Typography>
-        <TextField
-          className={s.input}
-          label={'Email'}
-          {...register('email')}
-          errorMessage={errors.email?.message}
-        ></TextField>
+        <Typography variant={'h1'}>Check Email</Typography>
+        <img className={s.image} src={email} />
         <Typography className={s.body2} variant={'body2'}>
-          Enter your email address and we will send you further instructions
+          We’ve sent an Email with instructions to example@mail.com
         </Typography>
-        <Button className={s.sendInstructions}>Send instructions</Button>
-        <Typography className={s.rememberPassword} variant={'body2'}>
-          Did you remember your password?
-        </Typography>
-        <Button className={s.signUp} type={'submit'} variant={'link'}>
-          Try logging in
-        </Button>
+        <Button>Back to Sign In</Button>
       </form>
     </div>
   )

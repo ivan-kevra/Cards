@@ -1,6 +1,7 @@
 import s from './App.module.scss'
 
 import { Header } from './components/ui/header/Header'
+import { CheckEmail } from './pages/checkEmail/CheckEmail'
 import { ForgotPassword } from './pages/forgotPassword/ForgotPassword'
 import { SignIn } from './pages/signIn/SignIn'
 import { SignUp } from './pages/signUp/SignUp'
@@ -11,7 +12,8 @@ export const App = () => {
       <Header isLoggedIn={false} />
       {/* <SignIn /> */}
       {/* <SignUp /> */}
-      <ForgotPassword />
+      {/* <ForgotPassword /> */}
+      <CheckEmail />
     </div>
   )
 }
