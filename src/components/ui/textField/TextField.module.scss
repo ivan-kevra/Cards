@@ -49,7 +49,7 @@
 
       position: absolute;
       top: 17px;
-      left: 250px;
+      left: 320px;
 
       transform: translateY(-50%);
 
@@ -82,6 +82,7 @@
   }
   .errorText {
     color: var(--Danger-300);
+    text-align: start;
   }
 }
 

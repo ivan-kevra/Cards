@@ -1,16 +1,14 @@
-import { useForm } from 'react-hook-form'
-
-import { ControlledCheckbox } from '@/components/controlled/ControlledCheckbox'
 import { TextField } from '@/components/ui/textField/TextField'
 import { Typography } from '@/components/ui/typography/Typography'
-import { zodResolver } from '@hookform/resolvers/zod'
+
+import s from './SIgnUp.module.scss'
 import { z } from 'zod'
-
-import s from './SignIn.module.scss'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { ControlledCheckbox } from '@/components/controlled/ControlledCheckbox'
 import { Button } from '@/components/ui/button/Button'
-import { H1 } from '@/components/ui/typography/Typography.stories'
 
-export const SignIn = () => {
+export const SignUp = () => {
   const loginSchema = z.object({
     email: z.string().email(),
     password: z.string().min(3),
@@ -40,7 +38,7 @@ export const SignIn = () => {
   return (
     <div className={s.container}>
       <form className={s.content} onSubmit={handleSubmit(onSubmit)}>
-        <Typography variant={'h1'}>Sign in</Typography>
+        <Typography variant={'h1'}>Sign up</Typography>
         <TextField
           className={s.input}
           label={'Email'}
@@ -53,21 +51,24 @@ export const SignIn = () => {
           errorMessage={errors.password?.message}
           type={'password'}
         ></TextField>
+        <TextField
+          label={'Confirm password'}
+          {...register('password')}
+          errorMessage={errors.password?.message}
+          type={'password'}
+        ></TextField>
         <ControlledCheckbox
           className={s.checkbox}
           control={control}
           label={'Remember me'}
           name={'rememberMe'}
         />
-        <Button className={s.forgotPassword} variant={'link'}>
-          Forgot password?
-        </Button>
-        <Button>Sign in</Button>
+        <Button>Sign up</Button>
         <Typography as={'h1'} variant={'body2'}>
-          Don't have an account?
+          Already have an account?
         </Typography>
         <Button className={s.signUp} type={'submit'} variant={'link'}>
-          Sign up
+          Sign in
         </Button>
       </form>
     </div>
