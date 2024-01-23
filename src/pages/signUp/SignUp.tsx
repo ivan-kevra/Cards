@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form'
 
-import { ControlledCheckbox } from '@/components/controlled/ControlledCheckbox'
 import { Button } from '@/components/ui/button/Button'
 import { TextField } from '@/components/ui/textField/TextField'
 import { Typography } from '@/components/ui/typography/Typography'
@@ -47,28 +46,25 @@ export const SignUp = () => {
           errorMessage={errors.email?.message}
         ></TextField>
         <TextField
+          className={s.input}
           label={'Password'}
           {...register('password')}
           errorMessage={errors.password?.message}
           type={'password'}
         ></TextField>
         <TextField
+          className={s.input}
           label={'Confirm password'}
           {...register('password')}
           errorMessage={errors.password?.message}
           type={'password'}
         ></TextField>
-        <ControlledCheckbox
-          className={s.checkbox}
-          control={control}
-          label={'Remember me'}
-          name={'rememberMe'}
-        />
-        <Button>Sign up</Button>
+
+        <Button className={s.signUp}>Sign up</Button>
         <Typography as={'h1'} variant={'body2'}>
           Already have an account?
         </Typography>
-        <Button className={s.signUp} type={'submit'} variant={'link'}>
+        <Button type={'submit'} variant={'link'}>
           Sign in
         </Button>
       </form>

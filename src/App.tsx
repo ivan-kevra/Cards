@@ -9,9 +9,9 @@ export const App = () => {
   return (
     <div className={s.container}>
       <Header isLoggedIn={false} />
-      <SignIn />
+      {/* <SignIn /> */}
       <SignUp />
-      <ForgotPassword />
+      {/* <ForgotPassword /> */}
     </div>
   )
 }

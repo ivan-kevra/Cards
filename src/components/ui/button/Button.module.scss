@@ -78,6 +78,7 @@
   align-items: flex-start;
   color: var(--Primary-500);
   font-size: var(--font-size-m);
+  padding: 4px;
   &:hover {
     color: var(--Primary-300);
   }
@@ -86,7 +87,7 @@
   }
   &:focus-visible {
     border-radius: 130px;
-    border: 2px solid var(--Info-700);
+    outline: 2px solid var(--Info-700);
   }
   &:disabled {
     color: var(--Primary-900);

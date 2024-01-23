@@ -1,14 +1,13 @@
 import { useForm } from 'react-hook-form'
 
 import { ControlledCheckbox } from '@/components/controlled/ControlledCheckbox'
+import { Button } from '@/components/ui/button/Button'
 import { TextField } from '@/components/ui/textField/TextField'
 import { Typography } from '@/components/ui/typography/Typography'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './SignIn.module.scss'
-import { Button } from '@/components/ui/button/Button'
-import { H1 } from '@/components/ui/typography/Typography.stories'
 
 export const SignIn = () => {
   const loginSchema = z.object({
@@ -40,16 +39,19 @@ export const SignIn = () => {
   return (
     <div className={s.container}>
       <form className={s.content} onSubmit={handleSubmit(onSubmit)}>
-        <Typography variant={'h1'}>Sign in</Typography>
+        <Typography className={s.h1} variant={'h1'}>
+          Sign in
+        </Typography>
         <TextField
-          className={s.input}
           label={'Email'}
           {...register('email')}
+          className={s.input}
           errorMessage={errors.email?.message}
         ></TextField>
         <TextField
           label={'Password'}
           {...register('password')}
+          className={s.input}
           errorMessage={errors.password?.message}
           type={'password'}
         ></TextField>
@@ -60,10 +62,10 @@ export const SignIn = () => {
           name={'rememberMe'}
         />
         <Button className={s.forgotPassword} variant={'link'}>
-          Forgot password?
+          <Typography variant={'body2'}>Forgot password?</Typography>
         </Button>
-        <Button>Sign in</Button>
-        <Typography as={'h1'} variant={'body2'}>
+        <Button className={s.signIn}>Sign in</Button>
+        <Typography className={s.body2} variant={'body2'}>
           Don't have an account?
         </Typography>
         <Button className={s.signUp} type={'submit'} variant={'link'}>
