@@ -1,6 +1,6 @@
 import * as T from '@radix-ui/react-tabs'
 
-import s from './tabs.module.scss'
+import s from './Tabs.module.scss'
 
 type Props = {
   title: string
