@@ -10,8 +10,8 @@ export const App = () => {
     <div className={s.container}>
       <Header isLoggedIn={false} />
       {/* <SignIn /> */}
-      <SignUp />
-      {/* <ForgotPassword /> */}
+      {/* <SignUp /> */}
+      <ForgotPassword />
     </div>
   )
 }

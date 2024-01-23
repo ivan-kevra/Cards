@@ -21,7 +21,7 @@
     background: var(--Primary-700);
   }
   &:focus-visible {
-    border: 2px solid var(--Info-700);
+    outline: 2px solid var(--Info-700);
     background: var(--Primary-500);
   }
   &:disabled {
@@ -64,7 +64,7 @@
     color: var(--Primary-500);
   }
   &:focus-visible {
-    border: 2px solid var(--Info-700);
+    outline: 2px solid var(--Info-700);
     color: var(--Primary-500);
   }
   &:disabled {

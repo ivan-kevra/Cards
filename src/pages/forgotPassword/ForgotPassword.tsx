@@ -45,13 +45,11 @@ export const ForgotPassword = () => {
           {...register('email')}
           errorMessage={errors.email?.message}
         ></TextField>
-        <Typography variant={'body2'}>
+        <Typography className={s.body2} variant={'body2'}>
           Enter your email address and we will send you further instructions
         </Typography>
-        <Button>Send instructions</Button>
-        <Typography as={'h1'} variant={'body2'}>
-          Did you remember your password?
-        </Typography>
+        <Button className={s.sendInstructions}>Send instructions</Button>
+        <Typography variant={'body2'}>Did you remember your password?</Typography>
         <Button className={s.signUp} type={'submit'} variant={'link'}>
           Try logging in
         </Button>
