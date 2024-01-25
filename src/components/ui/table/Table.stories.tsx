@@ -5,7 +5,7 @@ import { Table } from './Table'
 
 export default {
   component: Table.Root,
-  title: 'Components/Data Display/Table',
+  title: 'Components/Table',
 } as Meta<typeof Table.Root>
 
 export const Default = {
@@ -31,7 +31,10 @@ export const Default = {
               do...
             </Table.Cell>
             <Table.Cell>
-              <Typography href={'https://it-incubator.io/'} target={'_blank'}>
+              <Typography
+                variant={'link1'}
+                // href={'https://it-incubator.io/'} target={'_blank'}
+              >
                 Какая-то ссылка кудато на какой-то источник с информациейо ссылка кудато на какой-то
                 источник
               </Typography>
@@ -48,7 +51,10 @@ export const Default = {
               do...
             </Table.Cell>
             <Table.Cell>
-              <Typography href={'https://it-incubator.io/'} target={'_blank'}>
+              <Typography
+                variant={'link2'}
+                //  href={'https://it-incubator.io/'} target={'_blank'}
+              >
                 Какая-то ссылка кудато на какой-то источник с информациейо ссылка кудато на какой-то
                 источник
               </Typography>

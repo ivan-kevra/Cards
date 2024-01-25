@@ -25,23 +25,3 @@ export const AllTypography = {
     </div>
   ),
 }
-
-// export const H1WithSpanComponent = {
-//   render: () => (
-//     <Typography as={'a'} variant={'h1'}>
-//       Span tag
-//     </Typography>
-//   ),
-// }
-
-// export const Icon = {
-//   render: () => <TheGift />,
-// }
-
-// export const H1WithMargin = {
-//   render: () => (
-//     <Typography.H1 ml={10} mt={20}>
-//       Heading 1
-//     </Typography.H1>
-//   ),
-// }
