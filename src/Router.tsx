@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { Decks, Pages } from './pages/private/pages/Decks'
 import { CheckEmail } from './pages/public/checkEmail/CheckEmail'
 import { CreateNewPassword } from './pages/public/createNewPassword/CreateNewPassword'
 import { ForgotPassword } from './pages/public/forgotPassword/ForgotPassword'
@@ -24,7 +25,7 @@ const publicRoutes: RouteObject[] = [
 
 const privateRoutes: RouteObject[] = [
   {
-    element: <div>hello</div>,
+    element: <Decks />,
     path: '/',
   },
 ]
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
 ])
 
 function PrivateRoutes() {
-  const isAuthenticated = false
+  const isAuthenticated = true
 
   return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
 }

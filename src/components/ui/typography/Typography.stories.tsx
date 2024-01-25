@@ -1,92 +1,47 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import { Meta } from '@storybook/react'
 
 import { Typography } from './Typography'
 
-const meta = {
-  argTypes: {
-    variant: {
-      control: { type: 'radio' },
-    },
-  },
+export default {
   component: Typography,
-  tags: ['autodocs'],
   title: 'Components/Typography',
-} satisfies Meta<typeof Typography>
+} as Meta<typeof Typography>
 
-export default meta
-type Story = StoryObj<typeof meta>
+export const AllTypography = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Typography variant={'h1'}>Heading 1</Typography>
+      <Typography variant={'h2'}>Heading 2</Typography>
+      <Typography variant={'h3'}>Heading 3</Typography>
+      <Typography variant={'h4'}>Heading 4</Typography>
+      <Typography variant={'body1'}>Body 1</Typography>
+      <Typography variant={'subtitle1'}>Subtitle 1</Typography>
+      <Typography variant={'body2'}>Body 2</Typography>
+      <Typography variant={'subtitle2'}>Subtitle 2</Typography>
+      <Typography variant={'caption'}>Caption</Typography>
+      <Typography variant={'overline'}>Overline</Typography>
+      <Typography variant={'link1'}>Link 1</Typography>
+      <Typography variant={'link2'}>Link 2</Typography>
+    </div>
+  ),
+}
 
-export const Large: Story = {
-  args: {
-    children: 'Large text',
-    variant: 'large',
-  },
-}
-export const H1: Story = {
-  args: {
-    children: 'h1 text',
-    variant: 'h1',
-  },
-}
-export const H2: Story = {
-  args: {
-    children: 'h2 text',
-    variant: 'h2',
-  },
-}
-export const H3: Story = {
-  args: {
-    children: 'h3 text',
-    variant: 'h3',
-  },
-}
-export const Body1: Story = {
-  args: {
-    children: 'body1 text',
-    variant: 'body1',
-  },
-}
-export const Body2: Story = {
-  args: {
-    children: 'body2 text',
-    variant: 'body2',
-  },
-}
-export const Caption: Story = {
-  args: {
-    children: 'Caption text',
-    variant: 'caption',
-  },
-}
-export const Overline: Story = {
-  args: {
-    children: 'Overline text',
-    variant: 'overline',
-  },
-}
-export const Subtitle1: Story = {
-  args: {
-    children: 'Subtitle1 text',
-    variant: 'subtitle1',
-  },
-}
-export const Subtitle2: Story = {
-  args: {
-    children: 'Subtitle2 text',
-    variant: 'subtitle2',
-  },
-}
-export const Link1: Story = {
-  args: {
-    children: 'Link1 text',
-    variant: 'link1',
-  },
-}
-export const Link2: Story = {
-  args: {
-    children: 'Link2 text',
-    variant: 'link2',
-  },
-}
-// TODO
-// ADD VISITED LINKS STYLE
+// export const H1WithSpanComponent = {
+//   render: () => (
+//     <Typography as={'a'} variant={'h1'}>
+//       Span tag
+//     </Typography>
+//   ),
+// }
+
+// export const Icon = {
+//   render: () => <TheGift />,
+// }
+
+// export const H1WithMargin = {
+//   render: () => (
+//     <Typography.H1 ml={10} mt={20}>
+//       Heading 1
+//     </Typography.H1>
+//   ),
+// }

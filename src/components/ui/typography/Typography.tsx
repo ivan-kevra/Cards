@@ -15,7 +15,7 @@ type Props<T extends ElementType> = {
     | 'h1'
     | 'h2'
     | 'h3'
-    | 'large'
+    | 'h4'
     | 'link1'
     | 'link2'
     | 'overline'
