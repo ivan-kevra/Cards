@@ -129,39 +129,6 @@ export const WithMapMethod = {
   render: (args: any) => <Table.Root {...args} />,
 }
 
-export const WithReadMore = {
-  args: {
-    children: (
-      <>
-        <Table.Head>
-          <Table.Row>
-            <Table.HeadCell>Название</Table.HeadCell>
-            <Table.HeadCell align={'center'}>Описание</Table.HeadCell>
-            <Table.HeadCell>Ссылка</Table.HeadCell>
-            <Table.HeadCell>Тип</Table.HeadCell>
-            <Table.HeadCell>Вид</Table.HeadCell>
-          </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          {data.map(item => (
-            <Table.Row key={item.id}>
-              <Table.Cell>{item.title}</Table.Cell>
-              <Table.Cell>{item.description}</Table.Cell>
-              <Table.Cell width={300}>
-                {/* <ReadMore maxLength={60} text={item.link} /> */}
-              </Table.Cell>
-              <Table.Cell>{item.category}</Table.Cell>
-              <Table.Cell>{item.type}</Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </>
-    ),
-  },
-
-  render: (args: any) => <Table.Root {...args} />,
-}
-
 export const Empty = {
   render: (args: any) => <Table.Empty />,
 }

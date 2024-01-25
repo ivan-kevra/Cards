@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react'
+import { ComponentProps, ReactNode } from 'react'
 
 import clsx from 'clsx'
 
@@ -37,7 +37,11 @@ export const HeadCell = ({ className, ...rest }: HeadCellProps) => {
     headCell: clsx(className, s.headCell),
   }
 
-  return <th className={classNames.headCell} {...rest} />
+  return (
+    <th className={classNames.headCell}>
+      <Typography variant={'subtitle2'} {...rest} />
+    </th>
+  )
 }
 
 export type CellProps = ComponentProps<'td'>
@@ -47,7 +51,11 @@ export const Cell = ({ className, ...rest }: CellProps) => {
     cell: clsx(className, s.tableCell),
   }
 
-  return <td className={classNames.cell} {...rest} />
+  return (
+    <td className={classNames.cell}>
+      <Typography variant={'body2'} {...rest} />
+    </td>
+  )
 }
 
 type EmptyProps = ComponentProps<'div'> & { mb?: string; mt?: string }

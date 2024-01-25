@@ -4,8 +4,8 @@ import { Table } from '@/components/ui/table/Table'
 import { Typography } from '@/components/ui/typography/Typography'
 import { useGetDecksQuery } from '@/services/baseApi'
 
-export const Decks = () => {
-  const { data, error, isLoading } = useGetDecksQuery({ currentPage: 2, itemsPerPage: 3 })
+export const Decks2 = () => {
+  const { data, error, isLoading } = useGetDecksQuery()
 
   if (isLoading) {
     return <Typography variant={'h1'}>Loading...</Typography>
@@ -23,14 +23,12 @@ export const Decks = () => {
   return (
     <div>
       <Typography variant={'h1'}>Decks Page</Typography>
-      <Link to={'/decks2'}>Decks 2</Link>
+      <Link to={'/'}>DECKS</Link>
       <Table.Root>
         <Table.Head>
           <Table.Row>
             <Table.HeadCell>Name</Table.HeadCell>
             <Table.HeadCell>Cards</Table.HeadCell>
-            <Table.HeadCell>Last updated</Table.HeadCell>
-            <Table.HeadCell>Created by</Table.HeadCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
@@ -38,8 +36,6 @@ export const Decks = () => {
             <Table.Row key={deck.id}>
               <Table.Cell>{deck?.name}</Table.Cell>
               <Table.Cell>{deck?.cardsCount}</Table.Cell>
-              <Table.Cell>{new Date(deck?.updated).toLocaleDateString()}</Table.Cell>
-              <Table.Cell>{deck?.author.name}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
