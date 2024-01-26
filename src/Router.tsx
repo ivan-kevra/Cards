@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { Decks, Pages } from './pages/private/pages/Decks'
+import { Decks } from './pages/private/pages/Decks'
 import { Decks2 } from './pages/private/pages/Decks2'
 import { CheckEmail } from './pages/public/checkEmail/CheckEmail'
 import { CreateNewPassword } from './pages/public/createNewPassword/CreateNewPassword'
@@ -28,10 +28,6 @@ const privateRoutes: RouteObject[] = [
   {
     element: <Decks />,
     path: '/',
-  },
-  {
-    element: <Decks2 />,
-    path: '/decks2',
   },
 ]
 

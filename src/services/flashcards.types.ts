@@ -34,3 +34,22 @@ export type GetDecksArgs = {
   name?: string
   orderBy?: 'asc' | 'desc'
 }
+export type GetDeckByIdArgs = {
+  id: string
+}
+export type GetDeckByIdResponse = {
+  author?: GetDecksResponseItemsAuthor
+  cardsCount: number
+  cover: string
+  created: string
+  id?: string
+  isPrivate?: boolean
+  name?: string
+  updated: string
+  userId: string
+}
+export type CreateDeckArgs = {
+  cover?: string
+  isPrivate?: boolean
+  name: string
+}

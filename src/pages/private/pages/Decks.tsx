@@ -1,11 +1,23 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import { Button } from '@/components/ui/button/Button'
 import { Table } from '@/components/ui/table/Table'
 import { Typography } from '@/components/ui/typography/Typography'
-import { useGetDecksQuery } from '@/services/baseApi'
+import {
+  useCreateDeckMutation,
+  useGetDeckByIdQuery,
+  useGetDecksQuery,
+} from '@/services/decks.service'
 
 export const Decks = () => {
-  const { data, error, isLoading } = useGetDecksQuery({ currentPage: 2, itemsPerPage: 3 })
+  const [currentPage, setCurrentPage] = useState(1)
+  const { data, error, isLoading } = useGetDecksQuery({ currentPage, itemsPerPage: 10 })
+  const { data: deckByIdData } = useGetDeckByIdQuery({ id: 'clrtrh14d0447y42wry0hf2wy' })
+
+  const [createDeck, deckCreationStatus] = useCreateDeckMutation()
+
+  console.log(deckCreationStatus)
 
   if (isLoading) {
     return <Typography variant={'h1'}>Loading...</Typography>
@@ -23,7 +35,13 @@ export const Decks = () => {
   return (
     <div>
       <Typography variant={'h1'}>Decks Page</Typography>
-      <Link to={'/decks2'}>Decks 2</Link>
+      <Button
+        disabled={deckCreationStatus.isLoading}
+        onClick={() => createDeck({ name: 'new Deck 1' })}
+      >
+        Create deck
+      </Button>
+      <h2>current page: {data?.pagination?.currentPage}</h2>
       <Table.Root>
         <Table.Head>
           <Table.Row>
@@ -44,6 +62,17 @@ export const Decks = () => {
           ))}
         </Table.Body>
       </Table.Root>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {createArray(1, data?.pagination?.totalPages ?? 0).map(page => (
+          <Button key={page} onClick={() => setCurrentPage(page)}>
+            {page}
+          </Button>
+        ))}
+      </div>
     </div>
   )
+}
+
+function createArray(startNumber: number, length: number) {
+  return Array.from({ length }, (_, i) => startNumber + i)
 }
