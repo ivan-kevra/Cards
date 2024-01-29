@@ -6,5 +6,9 @@
       align-items: center;
       justify-content: space-between;
     }
+    .menu {
+      display: flex;
+      gap: 24px;
+    }
   }
 }

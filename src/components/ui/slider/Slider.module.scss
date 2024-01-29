@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 2px;
+  border: 1px solid var(--Dark-300);
+}
+.sliderRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  touch-action: none;
+  width: 155px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.sliderTrack {
+  background-color: var(--Primary-900);
+  position: relative;
+  flex-grow: 1;
+  border-radius: 9999px;
+  height: 3px;
+}
+
+.sliderRange {
+  position: absolute;
+  background-color: var(--Primary-300);
+  border-radius: 9999px;
+  height: 100%;
+}
+
+.sliderThumb {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 10px;
+  border: 4px solid var(--Primary-500);
+}
+.sliderThumb:hover {
+  // background-color: var(--violet-3, blue);
+}
+.sliderThumb:focus {
+  outline: none;
+  box-shadow: 0 0 0 5px var(--Primary-500);
+}

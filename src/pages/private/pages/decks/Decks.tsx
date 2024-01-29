@@ -13,6 +13,7 @@ import {
 } from '@/services/decks.service'
 
 import s from './Decks.module.scss'
+import { Slider } from '@/components/ui/slider/Slider'
 
 export const Decks = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -58,6 +59,7 @@ export const Decks = () => {
               { title: 'All Cards', value: '1' },
             ]}
           />
+          <Slider />
         </div>
 
         <Table.Root>
