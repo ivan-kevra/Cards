@@ -1,9 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Tabs } from './Tabs'
+import { TabContent, Tabs } from './Tabs'
 
 const meta = {
-  argTypes: {},
+  args: {
+    tabs: [
+      { title: 'Спринты', value: 'sprints' },
+      { title: 'Недели', value: 'weeks' },
+      { title: 'Темы', value: 'subjects' },
+    ],
+  },
   component: Tabs,
   tags: ['autodocs'],
   title: 'Components/Tabs',
@@ -12,8 +18,12 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
+export const Default = {
   args: {
-    name: 'default',
+    tabs: [
+      { title: '1st', value: 'sprints' },
+      { title: '2nd', value: 'weeks' },
+      { title: '3rd', value: 'subjects' },
+    ],
   },
 }
