@@ -44,7 +44,7 @@ export const Decks = () => {
   return (
     <div className={s.container}>
       <Header isLoggedIn />
-      <Header isLoggedIn />
+
       <div className={s.content}>
         <div className={s.header}>
           <Typography variant={'h1'}>Decks list</Typography>
