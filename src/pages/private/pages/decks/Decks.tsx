@@ -16,8 +16,8 @@ import {
 import s from './Decks.module.scss'
 
 import clear from './icons/delete.svg'
-import play from './icons/play.svg'
 import edit from './icons/edit.svg'
+import play from './icons/play.svg'
 
 export const Decks = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -44,7 +44,6 @@ export const Decks = () => {
   return (
     <div className={s.container}>
       <Header isLoggedIn />
-
       <div className={s.content}>
         <div className={s.header}>
           <Typography variant={'h1'}>Decks list</Typography>
