@@ -1,6 +1,9 @@
 .container {
   .content {
-    padding: 12px 136px 12px 137.5px;
+    padding: 26px 136px 12px 137.5px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
     .header {
       display: flex;
       align-items: center;
@@ -8,7 +11,12 @@
     }
     .menu {
       display: flex;
+      justify-content: space-between;
       gap: 24px;
+    }
+    .icons {
+      display: flex;
+      gap: 10px;
     }
   }
 }

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import * as SliderRadix from '@radix-ui/react-slider'
 
 import s from './Slider.module.scss'
+
 import { Typography } from '../typography/Typography'
 
 export const Slider = () => {

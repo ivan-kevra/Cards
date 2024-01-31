@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui/button/Button'
 import { Header } from '@/components/ui/header/Header'
+import { Slider } from '@/components/ui/slider/Slider'
 import { Table } from '@/components/ui/table/Table'
 import { Tabs } from '@/components/ui/tabs/Tabs'
 import { TextField } from '@/components/ui/textField/TextField'
@@ -13,7 +14,10 @@ import {
 } from '@/services/decks.service'
 
 import s from './Decks.module.scss'
-import { Slider } from '@/components/ui/slider/Slider'
+
+import clear from './icons/delete.svg'
+import play from './icons/play.svg'
+import edit from './icons/edit.svg'
 
 export const Decks = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -50,7 +54,6 @@ export const Decks = () => {
             Add new Deck
           </Button>
         </div>
-
         <div className={s.menu}>
           <TextField type={'search'} />
           <Tabs
@@ -60,6 +63,10 @@ export const Decks = () => {
             ]}
           />
           <Slider />
+          <Button variant={'secondary'}>
+            <img src={clear} />
+            Clear Filter
+          </Button>
         </div>
 
         <Table.Root>
@@ -69,6 +76,7 @@ export const Decks = () => {
               <Table.HeadCell>Cards</Table.HeadCell>
               <Table.HeadCell>Last updated</Table.HeadCell>
               <Table.HeadCell>Created by</Table.HeadCell>
+              <Table.HeadCell></Table.HeadCell>
             </Table.Row>
           </Table.Head>
           <Table.Body>
@@ -78,17 +86,24 @@ export const Decks = () => {
                 <Table.Cell>{deck?.cardsCount}</Table.Cell>
                 <Table.Cell>{new Date(deck?.updated).toLocaleDateString()}</Table.Cell>
                 <Table.Cell>{deck?.author.name}</Table.Cell>
+                <Table.Cell>
+                  <div className={s.icons}>
+                    <img src={play} />
+                    <img src={edit} />
+                    <img src={clear} />
+                  </div>
+                </Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
         </Table.Root>
-        {/* <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           {createArray(1, data?.pagination?.totalPages ?? 0).map(page => (
             <Button key={page} onClick={() => setCurrentPage(page)}>
               {page}
             </Button>
           ))}
-        </div> */}
+        </div>
       </div>
     </div>
   )
