@@ -15,10 +15,10 @@ import {
 
 import s from './Decks.module.scss'
 
+import { Pagination } from '../../../../components/ui/pagination/Pagination'
 import clear from './icons/delete.svg'
 import edit from './icons/edit.svg'
 import play from './icons/play.svg'
-import { Pagination } from './pagination/Pagination'
 
 export const Decks = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -26,8 +26,6 @@ export const Decks = () => {
   const { data: deckByIdData } = useGetDeckByIdQuery({ id: 'clrtrh14d0447y42wry0hf2wy' })
 
   const [createDeck, deckCreationStatus] = useCreateDeckMutation()
-
-  console.log(deckCreationStatus)
 
   if (isLoading) {
     return <Typography variant={'h1'}>Loading...</Typography>
@@ -98,12 +96,13 @@ export const Decks = () => {
             ))}
           </Table.Body>
         </Table.Root>
-        {/* <Pagination
-          data={data}
-          itemsPerPage={data?.pagination.itemsPerPage}
+        <Pagination
+          currentPage={currentPage}
+          itemsPerPage={data?.pagination.itemsPerPage ?? 0}
           onPageChange={setCurrentPage}
-          totalItemsCount={data?.pagination.totalItems}
-        /> */}
+          totalItems={data?.pagination.totalItems}
+          totalPages={data?.pagination.totalPages}
+        />
       </div>
     </div>
   )

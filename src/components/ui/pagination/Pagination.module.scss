@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.arrow {
+  all: unset;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--Light-100);
+  &:disabled {
+    color: var(--Dark-100);
+  }
+}
+.pageNumber {
+  all: unset;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+}
+.active {
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
