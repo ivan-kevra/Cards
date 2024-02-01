@@ -18,6 +18,7 @@ import s from './Decks.module.scss'
 import clear from './icons/delete.svg'
 import edit from './icons/edit.svg'
 import play from './icons/play.svg'
+import { Pagination } from './pagination/Pagination'
 
 export const Decks = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -97,18 +98,13 @@ export const Decks = () => {
             ))}
           </Table.Body>
         </Table.Root>
-        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-          {createArray(1, data?.pagination?.totalPages ?? 0).map(page => (
-            <Button key={page} onClick={() => setCurrentPage(page)}>
-              {page}
-            </Button>
-          ))}
-        </div>
+        {/* <Pagination
+          data={data}
+          itemsPerPage={data?.pagination.itemsPerPage}
+          onPageChange={setCurrentPage}
+          totalItemsCount={data?.pagination.totalItems}
+        /> */}
       </div>
     </div>
   )
-}
-
-function createArray(startNumber: number, length: number) {
-  return Array.from({ length }, (_, i) => startNumber + i)
 }
