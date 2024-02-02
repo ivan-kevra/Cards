@@ -32,11 +32,11 @@ export const Tabs = ({ defaultValue, onValueChange, tabs, value }: Props) => {
       value={value}
     >
       <TabRadix.List className={classNames.list}>
-        {tabs?.map(tab => (
+        {tabs?.map((tab: TabType, i: number) => (
           <TabRadix.Trigger
             className={classNames.trigger}
             disabled={tab.disabled}
-            key={tab.value}
+            key={i}
             value={tab.value}
           >
             {tab.title}

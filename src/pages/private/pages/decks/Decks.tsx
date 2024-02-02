@@ -86,11 +86,11 @@ export const Decks = () => {
                 <Table.Cell>{new Date(deck?.updated).toLocaleDateString()}</Table.Cell>
                 <Table.Cell>{deck?.author.name}</Table.Cell>
                 <Table.Cell>
-                  <div className={s.icons}>
+                  <span className={s.icons}>
                     <img src={play} />
                     <img src={edit} />
                     <img src={clear} />
-                  </div>
+                  </span>
                 </Table.Cell>
               </Table.Row>
             ))}

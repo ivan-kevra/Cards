@@ -1,38 +1,51 @@
-import { useState } from 'react'
-
-import { Button } from '@/components/ui/button/Button'
-
 import s from './Pagination.module.scss'
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+import { usePagination } from './usePagination'
 
 type Props = {
   currentPage: number
   itemsPerPage: number
   onPageChange: (page: number) => void
-  totalItems: number
-  totalPages: number
+  totalItems?: number
+  totalPages?: number
 }
-export const Pagination = ({ currentPage, onPageChange, totalPages = 0 }: Props) => {
+export const Pagination = ({
+  currentPage,
+  itemsPerPage,
+  onPageChange,
+  totalItems = 0,
+  totalPages = 0,
+}: Props) => {
   const onBackClickHandler = () => onPageChange(currentPage - 1)
   const onForwardClickHandler = () => onPageChange(currentPage + 1)
+
+  const pages = usePagination({
+    currentPage,
+    pageSize: itemsPerPage,
+    siblingCount: 1,
+    totalCount: totalItems,
+    totalPageCount: totalPages,
+  })
+
+  // console.log(pages)
 
   return (
     <div className={s.container}>
       <button className={s.arrow} disabled={currentPage <= 1} onClick={onBackClickHandler}>
         {'<'}
       </button>
-
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {createArray(1, totalPages ?? 0).map(page => (
-          <button
-            className={s.pageNumber + ' ' + (page === currentPage ? s.active : '')}
-            key={page}
-            onClick={() => onPageChange(page)}
-          >
-            {page}
-          </button>
-        ))}
+        {pages()?.map((page: number | string, i: number) => {
+          return (
+            <button
+              className={s.pageNumber + ' ' + (page === currentPage ? s.active : '')}
+              key={i}
+              onClick={() => onPageChange(+page)}
+            >
+              {page}
+            </button>
+          )
+        })}
       </div>
       <button
         className={s.arrow}
@@ -43,8 +56,4 @@ export const Pagination = ({ currentPage, onPageChange, totalPages = 0 }: Props)
       </button>
     </div>
   )
-}
-
-function createArray(startNumber: number, length: number) {
-  return Array.from({ length }, (_, i) => startNumber + i)
 }
