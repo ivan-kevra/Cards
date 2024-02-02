@@ -1,32 +1,34 @@
+.button {
+  all: unset;
+  cursor: pointer;
+  padding: 0px 8px;
+  &:hover {
+    border-radius: 2px;
+    background: var(--Dark-500);
+  }
+  &:disabled {
+    cursor: default;
+    color: var(--Dark-100);
+    background: none;
+  }
+  &:focus {
+    background: none;
+  }
+}
+
 .container {
   display: flex;
   gap: 12px;
   align-items: center;
-}
-.arrow {
-  all: unset;
-  cursor: pointer;
-  width: 16px;
-  height: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--Light-100);
-  &:disabled {
-    color: var(--Dark-100);
+  .pages {
+    display: flex;
+    gap: 12px;
+
+    .active {
+      background-color: white;
+      color: black;
+      display: flex;
+      justify-content: center;
+    }
   }
-}
-.pageNumber {
-  all: unset;
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-}
-.active {
-  background-color: white;
-  color: black;
-  display: flex;
-  justify-content: center;
 }

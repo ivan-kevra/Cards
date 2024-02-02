@@ -1,6 +1,10 @@
+import { clsx } from 'clsx'
+
 import s from './Pagination.module.scss'
 
 import { usePagination } from './usePagination'
+import { Typography } from '../typography/Typography'
+import { Button } from '../button/Button'
 
 type Props = {
   currentPage: number
@@ -27,33 +31,42 @@ export const Pagination = ({
     totalPageCount: totalPages,
   })
 
-  // console.log(pages)
+  const classNames = {
+    arrow: clsx(s.button),
+    container: clsx(s.container),
+    pages: clsx(s.pages),
+  }
 
   return (
-    <div className={s.container}>
-      <button className={s.arrow} disabled={currentPage <= 1} onClick={onBackClickHandler}>
+    <div className={classNames.container}>
+      <Button className={classNames.arrow} disabled={currentPage <= 1} onClick={onBackClickHandler}>
         {'<'}
-      </button>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      </Button>
+      <div className={classNames.pages}>
         {pages()?.map((page: number | string, i: number) => {
+          const classNames = {
+            root: clsx(s.button, page === currentPage && s.active),
+          }
+
           return (
-            <button
-              className={s.pageNumber + ' ' + (page === currentPage ? s.active : '')}
+            <Button
+              className={classNames.root}
+              disabled={page === '...'}
               key={i}
               onClick={() => onPageChange(+page)}
             >
               {page}
-            </button>
+            </Button>
           )
         })}
       </div>
-      <button
-        className={s.arrow}
+      <Button
+        className={classNames.arrow}
         disabled={currentPage >= totalPages}
         onClick={onForwardClickHandler}
       >
         {'>'}
-      </button>
+      </Button>
     </div>
   )
 }

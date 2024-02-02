@@ -39,7 +39,7 @@ export const HeadCell = ({ className, ...rest }: HeadCellProps) => {
 
   return (
     <th className={classNames.headCell}>
-      <Typography variant={'subtitle2'} {...rest} />
+      <Typography variant={'subtitle2'} {...rest} className={s.text} />
     </th>
   )
 }
@@ -53,7 +53,7 @@ export const Cell = ({ className, ...rest }: CellProps) => {
 
   return (
     <td className={classNames.cell}>
-      <Typography variant={'body2'} {...rest} />
+      <Typography variant={'body2'} {...rest} className={s.text} />
     </td>
   )
 }
