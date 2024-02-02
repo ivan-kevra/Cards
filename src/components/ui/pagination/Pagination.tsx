@@ -6,6 +6,7 @@ import { usePagination } from './usePagination'
 import { Typography } from '../typography/Typography'
 import { Button } from '../button/Button'
 import { Pages } from './pages/Pages'
+import SelectDemo, { Select } from '../select/Select'
 
 type Props = {
   currentPage: number
@@ -47,7 +48,7 @@ export const Pagination = ({
       >
         {'>'}
       </Button>
-      <Typography variant={'body2'}>Показать {<select>йцу</select>} на странице</Typography>
+      <Typography variant={'body2'}>Показать {<SelectDemo />} на странице</Typography>
     </div>
   )
 }
