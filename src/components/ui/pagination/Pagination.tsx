@@ -5,6 +5,7 @@ import s from './Pagination.module.scss'
 import { usePagination } from './usePagination'
 import { Typography } from '../typography/Typography'
 import { Button } from '../button/Button'
+import { Pages } from './pages/Pages'
 
 type Props = {
   currentPage: number
@@ -31,42 +32,22 @@ export const Pagination = ({
     totalPageCount: totalPages,
   })
 
-  const classNames = {
-    arrow: clsx(s.button),
-    container: clsx(s.container),
-    pages: clsx(s.pages),
-  }
+  const items = pages()
 
   return (
-    <div className={classNames.container}>
-      <Button className={classNames.arrow} disabled={currentPage <= 1} onClick={onBackClickHandler}>
+    <div className={s.container}>
+      <Button className={s.button} disabled={currentPage <= 1} onClick={onBackClickHandler}>
         {'<'}
       </Button>
-      <div className={classNames.pages}>
-        {pages()?.map((page: number | string, i: number) => {
-          const classNames = {
-            root: clsx(s.button, page === currentPage && s.active),
-          }
-
-          return (
-            <Button
-              className={classNames.root}
-              disabled={page === '...'}
-              key={i}
-              onClick={() => onPageChange(+page)}
-            >
-              {page}
-            </Button>
-          )
-        })}
-      </div>
+      <Pages currentPage={currentPage} items={items} onPageChange={onPageChange} />
       <Button
-        className={classNames.arrow}
+        className={s.button}
         disabled={currentPage >= totalPages}
         onClick={onForwardClickHandler}
       >
         {'>'}
       </Button>
+      <Typography variant={'body2'}>Показать {<select>йцу</select>} на странице</Typography>
     </div>
   )
 }
