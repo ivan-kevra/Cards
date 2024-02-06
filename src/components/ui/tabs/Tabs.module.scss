@@ -1,10 +1,12 @@
 .root {
   display: flex;
   flex-direction: column;
+
   .list {
     display: flex;
     flex-shrink: 0;
     border-bottom: 2px solid var(--color-border-input-primary);
+
     .trigger {
       padding: 6px 24px;
       border-radius: 2px 0px 0px 2px;

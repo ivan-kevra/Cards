@@ -13,10 +13,21 @@
       display: flex;
       justify-content: space-between;
       gap: 24px;
+      .tabs {
+        width: 250px;
+      }
     }
     .icons {
       display: flex;
       gap: 10px;
+    }
+    .block {
+      display: flex;
+      .select {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }

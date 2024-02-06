@@ -1,12 +1,10 @@
-import { clsx } from 'clsx'
-
 import s from './Pagination.module.scss'
 
-import { usePagination } from './usePagination'
-import { Typography } from '../typography/Typography'
 import { Button } from '../button/Button'
+import { Select } from '../select/Select'
+import { Typography } from '../typography/Typography'
 import { Pages } from './pages/Pages'
-import SelectDemo, { Select } from '../select/Select'
+import { usePagination } from './usePagination'
 
 type Props = {
   currentPage: number
@@ -48,7 +46,6 @@ export const Pagination = ({
       >
         {'>'}
       </Button>
-      <Typography variant={'body2'}>Показать {<SelectDemo />} на странице</Typography>
     </div>
   )
 }

@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui/button/Button'
 import { Header } from '@/components/ui/header/Header'
+import { Select } from '@/components/ui/select/Select'
 import { Slider } from '@/components/ui/slider/Slider'
 import { Table } from '@/components/ui/table/Table'
 import { Tabs } from '@/components/ui/tabs/Tabs'
@@ -56,6 +57,7 @@ export const Decks = () => {
         <div className={s.menu}>
           <TextField type={'search'} />
           <Tabs
+            className={s.tabs}
             tabs={[
               { title: 'My Cards', value: '1' },
               { title: 'All Cards', value: '1' },
@@ -67,7 +69,6 @@ export const Decks = () => {
             Clear Filter
           </Button>
         </div>
-
         <Table.Root>
           <Table.Head>
             <Table.Row>
@@ -96,13 +97,18 @@ export const Decks = () => {
             ))}
           </Table.Body>
         </Table.Root>
-        <Pagination
-          currentPage={currentPage}
-          itemsPerPage={data?.pagination.itemsPerPage ?? 0}
-          onPageChange={setCurrentPage}
-          totalItems={data?.pagination.totalItems}
-          totalPages={data?.pagination.totalPages}
-        />
+        <div className={s.block}>
+          <Pagination
+            currentPage={currentPage}
+            itemsPerPage={data?.pagination.itemsPerPage ?? 0}
+            onPageChange={setCurrentPage}
+            totalItems={data?.pagination.totalItems}
+            totalPages={data?.pagination.totalPages}
+          />
+          <Typography className={s.select} variant={'body2'}>
+            Показать {<Select />} на странице
+          </Typography>
+        </div>
       </div>
     </div>
   )

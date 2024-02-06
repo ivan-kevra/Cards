@@ -12,14 +12,15 @@ export type TabType = {
 }
 type Props = {
   children?: ReactNode
+  className?: string
   defaultValue?: any
   onValueChange?: (value: string) => void
   tabs: TabType[]
   value?: string
 }
-export const Tabs = ({ defaultValue, onValueChange, tabs, value }: Props) => {
+export const Tabs = ({ className, defaultValue, onValueChange, tabs, value }: Props) => {
   const classNames = {
-    list: clsx(s.list),
+    list: clsx(s.list, className),
     root: s.root,
     trigger: clsx(s.trigger),
   }
