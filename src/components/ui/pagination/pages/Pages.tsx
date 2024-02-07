@@ -12,7 +12,7 @@ type PagesProps = {
 export const Pages = ({ currentPage, items, onPageChange }: PagesProps) => {
   return (
     <div className={s.pages}>
-      {items?.map((page: number | string) => {
+      {items?.map((page: number | string, index: number) => {
         const classNames = {
           root: clsx(s.button, page === currentPage && s.active),
         }
@@ -21,7 +21,7 @@ export const Pages = ({ currentPage, items, onPageChange }: PagesProps) => {
           <Button
             className={classNames.root}
             disabled={page === '...'}
-            key={page}
+            key={index}
             onClick={() => onPageChange(+page)}
           >
             {page}

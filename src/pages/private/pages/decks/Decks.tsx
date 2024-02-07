@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 import { Button } from '@/components/ui/button/Button'
 import { Header } from '@/components/ui/header/Header'
@@ -13,6 +13,7 @@ import {
   useGetDeckByIdQuery,
   useGetDecksQuery,
 } from '@/services/decks.service'
+import { useDebounceValue } from 'usehooks-ts'
 
 import s from './Decks.module.scss'
 
@@ -23,7 +24,21 @@ import play from './icons/play.svg'
 
 export const Decks = () => {
   const [currentPage, setCurrentPage] = useState(1)
-  const { data, error, isLoading } = useGetDecksQuery({ currentPage, itemsPerPage: 10 })
+
+  const [searchValue, setSearchValue] = useState<string>('')
+  const [debouncedValue, setValue] = useDebounceValue(searchValue, 500)
+
+  const onSearchValue = (event: ChangeEvent<HTMLInputElement>) => {
+    setCurrentPage(1)
+    setSearchValue(event.currentTarget.value)
+  }
+
+  const { data, error, isLoading } = useGetDecksQuery({
+    currentPage,
+    itemsPerPage: 10,
+    name: debouncedValue,
+  })
+
   const { data: deckByIdData } = useGetDeckByIdQuery({ id: 'clrtrh14d0447y42wry0hf2wy' })
 
   const [createDeck, deckCreationStatus] = useCreateDeckMutation()
@@ -55,7 +70,7 @@ export const Decks = () => {
           </Button>
         </div>
         <div className={s.menu}>
-          <TextField type={'search'} />
+          <TextField onChange={onSearchValue} type={'search'} value={searchValue} />
           <Tabs
             className={s.tabs}
             tabs={[
