@@ -1,8 +1,6 @@
 import s from './Pagination.module.scss'
 
 import { Button } from '../button/Button'
-import { Select } from '../select/Select'
-import { Typography } from '../typography/Typography'
 import { Pages } from './pages/Pages'
 import { usePagination } from './usePagination'
 
